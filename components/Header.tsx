@@ -1,31 +1,6 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-
-interface INavLink {
-  linkTo: string;
-  title: string;
-  target?: string;
-}
-
 export const Header: React.FC = () => {
-  const navLinks: INavLink[] = [
-    { linkTo: "/", title: "Candles" },
-    { linkTo: "/about", title: "About us" },
-    { linkTo: "/wholesale", title: "Wholesale" },
-    {
-      linkTo: "https://flowwow.com/en-en/shop/austris-handmade-candles/",
-      title: "Flowwow",
-      target: "_blank",
-    },
-    { linkTo: "/contacts", title: "Contact us" },
-    { linkTo: "/cart", title: "Cart" },
-  ];
-
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200 p-0">
       <div className="flex-1">
         <p className="text-xl text-black font-bold">My Blog</p>
       </div>
@@ -37,12 +12,7 @@ export const Header: React.FC = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
-            </div>
+            <div className="w-10 rounded-full bg-gray-800"></div>
           </div>
           <ul
             tabIndex={0}
