@@ -1,6 +1,6 @@
 import { Blog } from "@/components/Blog";
 
-export default function Home() {
+export default function Posts() {
   const posts = [
     {
       id: 1,
