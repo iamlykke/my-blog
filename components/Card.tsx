@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface ICard {
   title: string;
   description: string;
@@ -6,15 +8,18 @@ interface ICard {
 
 export const Card = ({ title, description, createdAt }: ICard) => {
   return (
-    <div className="card bg-base-100 w-full shadow-sm">
-      <div className="card-body w-full">
-        <div className="flex justify-between w-full items-center">
-          <h2 className="card-title">{title}</h2>
-          <span className="w-fit">{createdAt}</span>
-        </div>
+    <div className="flex flex-col w-full gap-1">
+      <div className="flex justify-between w-full items-center">
+        <Link href="#">
+          <h2 className="card-title underline underline-offset-1 font-bold">
+            {title}
+          </h2>
+        </Link>
 
-        <p>{description}</p>
+        <span className="w-fit text-sm font-medium">{createdAt}</span>
       </div>
+
+      <p className="text-sm">{description}</p>
     </div>
   );
 };

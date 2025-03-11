@@ -34,7 +34,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto py-6">
+    <div className="max-w-3xl mx-auto py-6 w-full">
       <h1 className="text-2xl font-bold mb-4">Create New Post</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <fieldset className="fieldset">

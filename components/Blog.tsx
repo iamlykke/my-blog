@@ -9,7 +9,7 @@ interface IPost {
 
 export const Blog = ({ posts }: { posts: IPost[] }) => {
   return (
-    <div className="grid gap-5">
+    <div className="grid gap-5 py-6">
       {posts.map((post: IPost) => {
         return (
           <Card
