@@ -1,6 +1,6 @@
 "use client";
 
-import { Pen, Pencil } from "lucide-react";
+import { Pen } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
