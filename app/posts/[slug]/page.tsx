@@ -12,7 +12,7 @@ export default async function PostPage({
 }: {
   params: { slug: string };
 }) {
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) return notFound();
 
