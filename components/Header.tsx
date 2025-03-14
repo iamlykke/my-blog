@@ -1,30 +1,31 @@
 "use client";
 
-import { Pen } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
+  const previousPage = pathname !== "/";
 
-  const isNewPostPage = pathname === "/posts/new";
-  const newPostButtonAppear: boolean = !isNewPostPage;
+  const getFormattedPath = (path: string) => {
+    if (path === "/" || path.startsWith("/posts/")) return "My Blog";
+
+    const name = path.replace("/", "");
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
 
   return (
-    <div className="navbar bg-base-200 p-0 justify-between h-fit">
-      <Link href="/" className="w-fit">
-        <p className="text-xl text-black font-bold">Blog</p>
+    <div className="navbar bg-base-200 p-0 justify-center h-fit relative">
+      {previousPage && (
+        <Link href="/" className="absolute left-2">
+          ← Назад
+        </Link>
+      )}
+      <Link href="/" className="w-fit no-underline">
+        <p className="text-xl text-black font-bold">
+          {getFormattedPath(pathname)}
+        </p>
       </Link>
-      <div className="flex gap-4">
-        {newPostButtonAppear && (
-          <Link href="/posts/new">
-            <button className="btn">
-              <Pen width={16} />
-              New post
-            </button>
-          </Link>
-        )}
-      </div>
     </div>
   );
 };

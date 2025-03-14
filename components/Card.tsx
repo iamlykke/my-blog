@@ -1,22 +1,21 @@
 import Link from "next/link";
 
 interface ICard {
+  slug: string;
   title: string;
   description: string;
-  createdAt: string;
+  created: string;
 }
 
-export const Card = ({ title, description, createdAt }: ICard) => {
+export const Card = ({ slug, title, description, created }: ICard) => {
   return (
     <div className="flex flex-col w-full gap-1">
       <div className="flex justify-between w-full items-center">
-        <Link href="#">
-          <h2 className="card-title underline underline-offset-1 font-bold">
-            {title}
-          </h2>
+        <Link href={`/posts/${slug}`}>
+          <h3 className="card-title font-bold">{title}</h3>
         </Link>
 
-        <span className="w-fit text-sm font-medium">{createdAt}</span>
+        <span className="w-fit text-sm font-medium">{created}</span>
       </div>
 
       <p className="text-sm">{description}</p>

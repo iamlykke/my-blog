@@ -1,3 +1,7 @@
 export default function About() {
-  return <p>Bla bla bla text text text</p>;
+  return (
+    <section>
+      <p>Привет! Я Серёга из Нови-сада.</p>
+    </section>
+  );
 }

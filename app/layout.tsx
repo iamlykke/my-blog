@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const roboto = Roboto({
+  variable: "--roboto",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "My blog",
-  description: "Next.js App",
+  description: "Lykke",
 };
 
 export default function RootLayout({
@@ -25,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className="bg-base-200">
+    <html lang="en" data-theme="light" className="bg-base-200 h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} max-w-[768px] container mx-auto px-4 py-4 antialiased`}
+        className={`${roboto.variable} flex flex-col h-full max-w-[768px] container mx-auto px-4 py-4 antialiased`}
       >
         <Header />
         {children}

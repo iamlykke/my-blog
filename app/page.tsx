@@ -1,26 +1,39 @@
-import { Blog } from "@/components/Blog";
+import { Card } from "@/components/Card";
+import { Intro } from "@/components/Intro";
+import { getAllPosts } from "@/lib/posts";
+
+interface IPost {
+  slug: string;
+  metadata: {
+    title: string;
+    description: string;
+    created: string;
+    tags: string;
+    draft: boolean;
+  };
+  content: string;
+}
 
 export default function Home() {
-  const posts = [
-    {
-      id: 1,
-      title: "Article",
-      description: "Small notes aboiut my life",
-      createdAt: "08.03.2025",
-    },
-    {
-      id: 2,
-      title: "Evangelion",
-      description: "It was amazing",
-      createdAt: "10.03.2025",
-    },
-    {
-      id: 3,
-      title: "Trip to Belgrade",
-      description: "Cool and rainy",
-      createdAt: "11.03.2025",
-    },
-  ];
+  const posts = getAllPosts();
 
-  return <Blog posts={posts} />;
+  return (
+    <div>
+      <Intro />
+      <div className="grid gap-3 py-8">
+        <h2 className="text-2xl font-bold">Мои посты</h2>
+        {posts.map((post: IPost) => {
+          return (
+            <Card
+              key={post.slug}
+              slug={post.slug}
+              title={post.metadata.title}
+              description={post.metadata.description}
+              created={post.metadata.created}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
