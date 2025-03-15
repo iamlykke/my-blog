@@ -17,7 +17,7 @@ export default function ConcertsPage() {
           width={736}
           height={100}
           alt="Chelsea grin 2024"
-          className="object-cover shadow"
+          className="object-cover shadow-2xl rounded-sm"
         />
         <p className="italic text-s">Chelsea Grin in Budapest, 2024</p>
       </div>

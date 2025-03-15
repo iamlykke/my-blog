@@ -8,7 +8,7 @@ interface IPost {
     title: string;
     description: string;
     created: string;
-    tags: string;
+    tags: string[];
     draft: boolean;
   };
   content: string;
@@ -22,17 +22,20 @@ export default function Home() {
       <Intro />
       <div className="grid gap-3 py-8">
         <h2 className="text-2xl font-bold">Мои посты</h2>
-        {posts.map((post: IPost) => {
-          return (
-            <Card
-              key={post.slug}
-              slug={post.slug}
-              title={post.metadata.title}
-              description={post.metadata.description}
-              created={post.metadata.created}
-            />
-          );
-        })}
+        <div className="flex flex-col gap-3">
+          {posts.map((post: IPost) => {
+            return (
+              <Card
+                key={post.slug}
+                slug={post.slug}
+                title={post.metadata.title}
+                description={post.metadata.description}
+                created={post.metadata.created}
+                tags={post.metadata.tags}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

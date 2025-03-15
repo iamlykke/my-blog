@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
         </Link>
       )}
 
-      <p className="text-xl text-black font-bold">
+      <p className="text-2xl text-black font-bold">
         {getFormattedPath(pathname)}
       </p>
     </div>

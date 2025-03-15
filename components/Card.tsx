@@ -5,6 +5,7 @@ interface ICard {
   title: string;
   description: string;
   created: string;
+  tags?: string[];
 }
 
 export const Card = ({ slug, title, description, created }: ICard) => {
@@ -17,8 +18,7 @@ export const Card = ({ slug, title, description, created }: ICard) => {
 
         <span className="w-fit text-sm font-medium">{created}</span>
       </div>
-
-      <p className="text-sm">{description}</p>
+      <p className="text-sm">{description}</p>{" "}
     </div>
   );
 };

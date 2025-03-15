@@ -1,5 +1,6 @@
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -19,6 +20,8 @@ export default async function PostPage({
 
   const { metadata, content } = post;
 
+  const withTags = metadata?.tags.length > 0;
+
   return (
     <article className="mt-7">
       <div className="mb-5">
@@ -26,12 +29,27 @@ export default async function PostPage({
           <h1 className="text-2xl font-bold">{metadata.title}</h1>
           <time
             date-time={`${metadata.created}T00:00:00.000Z`}
-            className="text-sm text-gray-500"
+            className="text-sm"
           >
             {metadata.created}
           </time>
         </div>
-        <p className="text-sm  text-gray-500">{metadata.description}</p>
+        <div className="flex flex-row w-full justify-between  items-center">
+          <p className="text-sm text-gray-700">{metadata.description}</p>
+          {withTags ? (
+            <div className="flex flex-row gap-1">
+              {metadata.tags.map((tag: string, index: number) => (
+                <span key={tag}>
+                  <Link
+                    className="text-sm text-gray-500 hover:text-gray-700"
+                    href="#"
+                  >{`#${tag}`}</Link>
+                  {index < metadata.tags.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
 
       <MDXRemote source={content} />
