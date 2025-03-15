@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Intro: React.FC = () => {
   return (
-    <section className="my-6">
+    <section className="my-5">
       <p className="text-xl font-semibold">Хеллоу в мой блог! 👋</p>
       <p className="text-md">
         Здесь я рассказываю про то, что мне интересно, и что могло бы быть
