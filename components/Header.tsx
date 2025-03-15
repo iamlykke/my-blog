@@ -21,11 +21,10 @@ export const Header: React.FC = () => {
           ← Назад
         </Link>
       )}
-      <Link href="/" className="w-fit no-underline">
-        <p className="text-xl text-black font-bold">
-          {getFormattedPath(pathname)}
-        </p>
-      </Link>
+
+      <p className="text-xl text-black font-bold">
+        {getFormattedPath(pathname)}
+      </p>
     </div>
   );
 };
