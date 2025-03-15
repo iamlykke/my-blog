@@ -20,8 +20,8 @@ export default function Home() {
   return (
     <div>
       <Intro />
-      <div className="grid gap-3 py-8">
-        <h2 className="text-2xl font-bold">Мои посты</h2>
+      <div className="grid gap-3 my-8">
+        <h2 className="text-xl font-bold">Мои посты</h2>
         <div className="flex flex-col gap-3">
           {posts.map((post: IPost) => {
             return (

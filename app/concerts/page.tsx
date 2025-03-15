@@ -19,7 +19,7 @@ export default function ConcertsPage() {
           alt="Chelsea grin 2024"
           className="object-cover shadow-2xl rounded-sm"
         />
-        <p className="italic text-s">Chelsea Grin in Budapest, 2024</p>
+        <p className="italic text-sm">Chelsea Grin in Budapest, 2024</p>
       </div>
 
       <Concerts />
