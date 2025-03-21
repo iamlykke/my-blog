@@ -22,14 +22,13 @@ export default function Home() {
       <Intro />
       <div className="grid gap-3 my-8">
         <h2 className="text-xl font-bold">Мои посты</h2>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           {posts.map((post: IPost) => {
             return (
               <Card
                 key={post.slug}
                 slug={post.slug}
                 title={post.metadata.title}
-                description={post.metadata.description}
                 created={post.metadata.created}
                 tags={post.metadata.tags}
               />

@@ -35,7 +35,7 @@ export default async function PostPage({
           </time>
         </div>
         <div className="flex flex-row w-full justify-between  items-center">
-          <p className="text-sm text-gray-700">{metadata.description}</p>
+          {/* <p className="text-sm text-gray-700">{metadata.description}</p> */}
           {withTags ? (
             <div className="flex flex-row gap-1">
               {metadata.tags.map((tag: string, index: number) => (
