@@ -7,7 +7,11 @@ export default function ConcertsPage() {
     <div className="mt-5">
       <p className="mb-3">
         Актуальная инфа всегда{" "}
-        <Link href="https://www.last.fm/user/iamlykke" target="_blank">
+        <Link
+          className="link-blue-underline"
+          href="https://www.last.fm/user/iamlykke"
+          target="_blank"
+        >
           тут
         </Link>
       </p>

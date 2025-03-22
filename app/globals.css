@@ -80,11 +80,33 @@ body {
 }
 
 @layer base {
-  a:not(.no-underline) {
-    @apply underline underline-offset-3 hover:no-underline;
+  a:not(.no-underline):not(.link-blue-underline) {
+    @apply underline underline-offset-3 transition-all duration-300 hover:no-underline;
   }
 
   p {
     @apply text-pretty;
+  }
+
+  .link-blue-underline {
+    @apply relative inline-block;
+  }
+
+  .link-blue-underline::after {
+    content: "";
+    @apply -z-10 absolute left-0 bottom-1 w-full h-1 bg-blue-300 opacity-70 transition-all duration-200;
+  }
+
+  .link-blue-underline:hover::after {
+    @apply opacity-90 h-1.5;
+  }
+
+  .tag {
+    @apply text-xs text-gray-400 hover:text-gray-700 transition-all duration-300;
+  }
+
+  .youtube-video {
+    width: 100%;
+    aspect-ratio: 16/9;
   }
 }

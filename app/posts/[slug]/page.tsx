@@ -35,16 +35,11 @@ export default async function PostPage({
           </time>
         </div>
         <div className="flex flex-row w-full justify-between  items-center">
-          {/* <p className="text-sm text-gray-700">{metadata.description}</p> */}
           {withTags ? (
             <div className="flex flex-row gap-1">
-              {metadata.tags.map((tag: string, index: number) => (
+              {metadata.tags.map((tag: string) => (
                 <span key={tag}>
-                  <Link
-                    className="text-sm text-gray-500 hover:text-gray-700"
-                    href="#"
-                  >{`#${tag}`}</Link>
-                  {index < metadata.tags.length - 1 && ", "}
+                  <Link className="tag no-underline" href="#">{`#${tag}`}</Link>
                 </span>
               ))}
             </div>
