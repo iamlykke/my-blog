@@ -81,7 +81,7 @@ body {
 
 @layer base {
   a:not(.no-underline):not(.link-blue-underline) {
-    @apply underline underline-offset-3 transition-all duration-300 hover:no-underline;
+    @apply no-underline  hover:underline underline-offset-3 transition-all duration-300;
   }
 
   p {

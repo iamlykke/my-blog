@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
   return (
     <div className="navbar bg-base-200 p-0 justify-center h-fit relative">
       {previousPage && (
-        <Link href="/" className="absolute left-2">
+        <Link href="/" className="absolute left-0 text-md">
           ← Назад
         </Link>
       )}
