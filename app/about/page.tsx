@@ -9,7 +9,7 @@ export default function About() {
         width={768}
         height={200}
         alt="My photo"
-        className="shadow-2xl rounded-sm object-cover"
+        className="shadow rounded-sm object-cover"
       />
       <h2 className="text-3xl font-bold mt-10 mb-2">👋 Привет</h2>
       <p className="text-m">Я фронтендер Серёга</p>

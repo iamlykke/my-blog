@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light" className="bg-base-200 h-full">
       <body
-        className={`${roboto.variable} flex flex-col h-full max-w-[768px] container mx-auto px-4 py-4 antialiased`}
+        className={`${roboto.variable} flex flex-col h-full max-w-[768px] container mx-auto px-4 pt-4 antialiased`}
       >
         <Header />
         {children}

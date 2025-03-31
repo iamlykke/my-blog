@@ -10,7 +10,7 @@ interface ICard {
 export const Card = ({ slug, title, created, tags }: ICard) => {
   return (
     <div className="flex flex-col w-full gap-0.5">
-      <div className="flex justify-between w-full items-center">
+      <div className="flex justify-between w-full items-center gap-1">
         <Link href={`/posts/${slug}`}>
           <h3 className="card-title font-bold text-pretty">{title}</h3>
         </Link>

@@ -25,7 +25,7 @@ export default async function PostPage({
   return (
     <article className="mt-7">
       <div className="mb-5">
-        <div className="flex flex-row w-full justify-between  items-center">
+        <div className="flex flex-row w-full justify-between gap-1 items-center">
           <h1 className="text-2xl font-bold">{metadata.title}</h1>
           <time
             date-time={`${metadata.created}T00:00:00.000Z`}
