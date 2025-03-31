@@ -32,14 +32,7 @@ export const Footer = () => {
 
   return (
     <footer className="w-full footer footer-horizontal footer-center bg-base-200 text-base-content pb-5 pt-12 rounded-b-none mt-auto">
-      <aside className="flex flex-row justify-between w-full">
-        {/* <p>Copyright © {new Date().getFullYear()} - Lykke</p> */}
-        <Image
-          src={"/images/footer/sleep.gif"}
-          width={100}
-          height={80}
-          alt={"nyan gif"}
-        />
+      <aside className="flex flex-row justify-center w-full">
         <div className="flex gap-4">
           {socials.map((social) => (
             <Link
