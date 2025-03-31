@@ -11,34 +11,40 @@ export function getPostSlugs() {
 
 // Получение поста по slug
 export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  
-  const { data, content } = matter(fileContents);
-  
-  return {
-    slug: realSlug,
-    metadata: {
+
+    const realSlug = slug.replace(/\.mdx$/, '');
+    const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
+    
+    if (!fs.existsSync(fullPath)) {
+      return null; // Файл не найден, возвращаем null
+    }
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    
+    return {
+      slug: realSlug,
+      metadata: {
         title: data.title,
         description: data.description,
         created: data.created,
         tags: data.tags,
         draft: data.draft,
       },
-    content,
-  };
+      content,
+    };
 }
+
 
 // Получение всех постов
 export function getAllPosts() {
   const slugs = getPostSlugs();
   return slugs
     .map(slug => getPostBySlug(slug))
-    .filter(post => !post.metadata.draft) // Игнорировать черновики
+    .filter(post => !post?.metadata.draft) // Игнорировать черновики
     .sort((a, b) => {
-      const dateA = new Date(a.metadata.created);
-      const dateB = new Date(b.metadata.created);
+      const dateA = new Date(a?.metadata.created);
+      const dateB = new Date(b?.metadata.created);
       return dateB.getTime() - dateA.getTime(); // Сортировка по дате (сначала новые)
     });
 }
