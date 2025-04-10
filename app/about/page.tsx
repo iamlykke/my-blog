@@ -27,7 +27,7 @@ export default function About() {
           </Link>
         </li>
         <li className="mb-2">
-          <Link href={"/concerts"}>Спосок посещенных концертов</Link>
+          <Link href={"/concerts"}>Список посещенных концертов</Link>
         </li>
         <li className="mb-2">
           <Link href={"https://www.last.fm/user/iamlykke"} target="_blank">
