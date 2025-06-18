@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-interface ICard {
+interface IPostPreview {
   slug: string;
   title: string;
   created: string;
   tags: string[];
 }
 
-export const Card = ({ slug, title, created, tags }: ICard) => {
+export const PostPreview = ({ slug, title, created, tags }: IPostPreview) => {
   return (
     <div className="flex flex-col w-full gap-0.5">
       <div className="flex justify-between w-full items-center gap-1">

@@ -1,5 +1,6 @@
-import { Card } from "@/components/Card";
 import { Intro } from "@/components/Intro";
+import { Lists } from "@/components/Lists";
+import { PostPreview } from "@/components/PostPreview";
 import { getAllPosts } from "@/lib/posts";
 
 interface IPost {
@@ -20,12 +21,13 @@ export default function Home() {
   return (
     <div>
       <Intro />
+      <Lists />
       <div className="grid gap-3 my-8">
         <h2 className="text-xl font-bold">Мои посты</h2>
         <div className="flex flex-col gap-4">
           {posts.map((post: IPost) => {
             return (
-              <Card
+              <PostPreview
                 key={post.slug}
                 slug={post.slug}
                 title={post.metadata.title}

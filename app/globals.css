@@ -89,7 +89,7 @@ body {
   }
 
   .link-blue-underline {
-    @apply relative inline-block;
+    @apply relative inline-block z-1;
   }
 
   .link-blue-underline::after {
