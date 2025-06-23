@@ -3,6 +3,14 @@ import createMDX from '@next/mdx'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['next-mdx-remote'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https' as const,
+        hostname: 'lastfm.freetls.fastly.net',
+      },
+    ],
+  },
 }
  
 const withMDX = createMDX({

@@ -11,7 +11,7 @@
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(97% 0 0);
+  --color-base-200: oklch(95% 0 0);
   --color-base-300: oklch(92% 0 0);
   --color-base-content: oklch(20% 0 0);
   --color-primary: oklch(86% 0.022 252.894);
@@ -81,7 +81,7 @@ body {
 
 @layer base {
   a:not(.no-underline):not(.link-blue-underline) {
-    @apply no-underline  hover:underline underline-offset-3 transition-all duration-300;
+    @apply no-underline hover:underline underline-offset-3 transition-all duration-300;
   }
 
   p {
@@ -94,7 +94,7 @@ body {
 
   .link-blue-underline::after {
     content: "";
-    @apply -z-10 absolute left-0 bottom-1 w-full h-1 bg-blue-300 opacity-70 transition-all duration-200;
+    @apply -z-10 absolute left-0 bottom-1 w-full h-1 bg-blue-200 opacity-70 transition-all duration-200;
   }
 
   .link-blue-underline:hover::after {

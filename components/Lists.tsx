@@ -10,12 +10,16 @@ export const Lists = () => {
           </Link>
         </li>
         <li className="list-row">
-          <Link href={"/games"} className="link-blue-underline text-md ">
+          <Link href={"/games"} className="link-blue-underline text-md">
             Пройденные игры
           </Link>
         </li>
         <li className="list-row">
-          <Link href={"/concerts"} className="link-blue-underline text-md ">
+          <Link
+            target="_blank"
+            href={"https://letterboxd.com/iamlykke/films/diary/"}
+            className="link-blue-underline text-md"
+          >
             Посмотреные фильмы и аниме
           </Link>
         </li>

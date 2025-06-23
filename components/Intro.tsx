@@ -2,40 +2,46 @@ import {
   FaLinkedin,
   FaTelegram,
   FaGithub,
-  FaInstagram,
-  FaSpotify,
+  FaLastfmSquare,
 } from "react-icons/fa";
 
 export const Intro: React.FC = () => {
   return (
     <section className="card bg-base-100 my-5 flex flex-row gap-4 shadow-sm p-6">
-      <figure className="avatar">
-        <div className="w-30 rounded-full">
-          <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-        </div>
-      </figure>
       <div className="flex flex-col w-full">
         <h2 className="font-bold text-lg">Добро пожаловать в мой блог!</h2>
-        <p className="text-md mt-1">
+        <p className="text-sm mt-2">
           Собираю здесь всё, что люблю и что меня окружает: концерты, фильмы,
           игры, путешествия и прочие заметки.
         </p>
-        <div className="flex flex-row justify-between mt-4">
-          <div className="flex gap-2 text-xl text-gray-600">
-            <a href="https://linkedin.com/in/yourname" target="_blank">
-              <FaLinkedin />
+        <div className="flex flex-row justify-between mt-4 items-center">
+          <div className="flex gap-2">
+            <a
+              href="https://www.linkedin.com/in/sergeiusachev/"
+              target="_blank"
+            >
+              <FaLinkedin
+                size="1.5rem"
+                className="opacity-70 hover:opacity-100 transition-all duration-300"
+              />
             </a>
-            <a href="https://t.me/yourname" target="_blank">
-              <FaTelegram />
+            <a href="https://t.me/iamlykke" target="_blank">
+              <FaTelegram
+                size="1.5rem"
+                className="opacity-70 hover:opacity-100 transition-all duration-300"
+              />
             </a>
-            <a href="https://github.com/yourname" target="_blank">
-              <FaGithub />
+            <a href="https://github.com/iamlykke" target="_blank">
+              <FaGithub
+                size="1.5rem"
+                className="opacity-70 hover:opacity-100 transition-all duration-300"
+              />
             </a>
-            <a href="https://instagram.com/yourname" target="_blank">
-              <FaInstagram />
-            </a>
-            <a href="https://open.spotify.com/user/yourname" target="_blank">
-              <FaSpotify />
+            <a href="https://www.last.fm/user/iamlykke" target="_blank">
+              <FaLastfmSquare
+                size="1.5rem"
+                className="opacity-70 hover:opacity-100 transition-all duration-300"
+              />
             </a>
           </div>
           <div className="text-sm text-gray-500">📍 Serbia, Novi Sad</div>
