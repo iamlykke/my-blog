@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { LastFmResponse } from "@/types/lastfm";
 import NowPlayingCard from "./NowPlayingCard";
 import TrackItem from "./TrackItem";
+import Slider from "./Slider";
 
 export const InfoPanel = () => {
   const [data, setData] = useState<LastFmResponse | null>(null);
@@ -29,7 +30,8 @@ export const InfoPanel = () => {
   const recentTracks = data?.history?.slice(0, 5) || [];
 
   return (
-    <aside className="w-90 h-screen bg-base-200 p-4 flex-col justify-between sticky top-0 hidden lg:flex">
+    <aside className="w-100 h-screen bg-base-200 p-4 flex-col justify-between sticky top-0 hidden lg:flex">
+      <Slider />
       <div className="mt-auto">
         <h3 className="text-sm font-semibold uppercase text-base-content mb-3">
           Recently Played

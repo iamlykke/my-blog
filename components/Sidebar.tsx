@@ -5,10 +5,10 @@ import { FaGamepad, FaHouse, FaMusic } from "react-icons/fa6";
 import { PiFilmSlateFill } from "react-icons/pi";
 
 export const Sidebar = () => {
-  const initials = "US";
+  const initials = "SU";
 
   return (
-    <aside className="w-64 h-100vh bg-base-200 text-white  flex-col justify-between px-4 py-6 hidden lg:flex">
+    <aside className="sticky top-0 w-64 h-screen bg-base-200 text-white  flex-col justify-between px-4 py-6 hidden lg:flex">
       <div>
         {/* Аватар и имя */}
         <div className="flex flex-col items-center mb-8">
@@ -23,7 +23,6 @@ export const Sidebar = () => {
 
         {/* Разделы */}
         <SidebarSection title="Menu">
-          {/* <SidebarLink icon={<HiOutlineCompass />} label="Discover" active /> */}
           <SidebarLink icon={<FaHouse />} label="Home" href="/" />
           <SidebarLink icon={<FaMusic />} label="Concerts" href="/concerts" />
           <SidebarLink icon={<FaGamepad />} label="Games" href="/games" />
