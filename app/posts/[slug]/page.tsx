@@ -23,7 +23,7 @@ export default async function PostPage({
   const withTags = metadata?.tags.length > 0;
 
   return (
-    <article className="mt-7">
+    <article>
       <div className="mb-5">
         <div className="flex flex-row w-full justify-between gap-1 items-center">
           <h1 className="text-2xl font-bold">{metadata.title}</h1>

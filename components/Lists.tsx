@@ -2,15 +2,15 @@ import Link from "next/link";
 
 export const Lists = () => {
   return (
-    <section className="flex flex-col card bg-base-100 my-5 gap-2 shadow-sm p-2">
+    <section className="flex flex-col card bg-base-200 my-5 gap-2 shadow-sm p-2">
       <ul className="list">
         <li className="list-row">
-          <Link href={"/concerts"} className="link-blue-underline text-md ">
+          <Link href={"/concerts"} className="text-md ">
             Посещенные концерты
           </Link>
         </li>
         <li className="list-row">
-          <Link href={"/games"} className="link-blue-underline text-md">
+          <Link href={"/games"} className="text-md">
             Пройденные игры
           </Link>
         </li>
@@ -18,7 +18,7 @@ export const Lists = () => {
           <Link
             target="_blank"
             href={"https://letterboxd.com/iamlykke/films/diary/"}
-            className="link-blue-underline text-md"
+            className="text-md"
           >
             Посмотреные фильмы и аниме
           </Link>

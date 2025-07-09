@@ -4,11 +4,11 @@ import Image from "next/image";
 
 export default function ConcertsPage() {
   return (
-    <div className="mt-5">
+    <div>
       <p className="mb-3">
         Актуальная инфа всегда{" "}
         <Link
-          className="link-blue-underline"
+          className="underline"
           href="https://www.last.fm/user/iamlykke"
           target="_blank"
         >

@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 p-0 justify-center h-fit relative">
+    <div className="navbar p-0 justify-center h-fit relative max-w-[768px] mx-auto">
       {previousPage && (
         <Link href="/" className="absolute left-0 text-md">
           ← Назад
