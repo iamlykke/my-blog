@@ -5,11 +5,11 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 
 const slides = [
-  {
-    title: "Hanabie.",
-    subtitle: "Next concert",
-    image: "/images/slides/slide_1.jpg",
-  },
+  // {
+  //   title: "Hanabie.",
+  //   subtitle: "Next concert",
+  //   image: "/images/slides/slide_1.jpg",
+  // },
   {
     title: "Yakuza 0",
     subtitle: "Now playing",
