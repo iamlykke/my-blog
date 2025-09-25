@@ -31,7 +31,7 @@ export const InfoPanel = () => {
 
   return (
     <aside className="w-100 h-screen bg-base-200 p-4 flex-col justify-between sticky top-0 hidden lg:flex">
-      <Slider />
+      {/* <Slider /> */}
       <div className="mt-auto">
         <h3 className="text-sm font-semibold uppercase text-base-content mb-3">
           Recently Played
