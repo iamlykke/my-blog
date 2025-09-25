@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LastFmResponse } from "@/types/lastfm";
 import NowPlayingCard from "./NowPlayingCard";
 import TrackItem from "./TrackItem";
-import Slider from "./Slider";
+// import Slider from "./Slider";
 
 export const InfoPanel = () => {
   const [data, setData] = useState<LastFmResponse | null>(null);
