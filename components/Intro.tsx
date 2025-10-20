@@ -1,20 +1,18 @@
-import {
-  FaLinkedin,
-  FaTelegram,
-  FaGithub,
-  FaLastfmSquare,
-} from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaLastfmSquare } from "react-icons/fa";
 
 export const Intro: React.FC = () => {
   return (
-    <section className="card bg-base-200 my-5 flex flex-row gap-4 shadow-sm p-6">
+    <section className="card bg-base-200 my-b-5 flex flex-row gap-4 shadow-sm p-6">
       <div className="flex flex-col w-full">
         <h2 className="font-bold text-lg">Добро пожаловать в мой блог!</h2>
-        <p className="text-sm mt-2">
+        <p className="text-sm mt-3">
           Собираю здесь всё, что люблю и что меня окружает: концерты, фильмы,
-          игры, путешествия и прочие заметки.
+          игры, путешествия и прочие заметки. Когда нибудь буду вести его
+          нормально, а пока экспериментирую с дизайном и наполнением. Планирую
+          добавить раздел с путешествиями и может быть краткие заметки и фотки с
+          концертов
         </p>
-        <div className="flex flex-row justify-between mt-4 items-center">
+        <div className="flex flex-row justify-between mt-5 items-center">
           <div className="flex gap-2">
             <a
               href="https://www.linkedin.com/in/sergeiusachev/"
@@ -25,12 +23,12 @@ export const Intro: React.FC = () => {
                 className="opacity-70 hover:opacity-100 transition-all duration-300"
               />
             </a>
-            <a href="https://t.me/iamlykke" target="_blank">
+            {/* <a href="https://t.me/iamlykke" target="_blank">
               <FaTelegram
                 size="1.5rem"
                 className="opacity-70 hover:opacity-100 transition-all duration-300"
               />
-            </a>
+            </a> */}
             <a href="https://github.com/iamlykke" target="_blank">
               <FaGithub
                 size="1.5rem"

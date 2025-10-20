@@ -20,7 +20,7 @@ export const Lists = () => {
             href={"https://letterboxd.com/iamlykke/films/diary/"}
             className="text-md"
           >
-            Посмотреные фильмы и аниме
+            Просмотреные фильмы (letterboxd)
           </Link>
         </li>
         {/* <li className="text-md list-row">

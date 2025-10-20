@@ -3,8 +3,6 @@ import { Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Sidebar } from "@/components/Sidebar";
-import { InfoPanel } from "@/components/InfoPanel";
 
 import "./globals.css";
 
@@ -24,16 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark">
-      <body className={`${roboto.variable} bg-base-200 antialiased`}>
-        <div className="w-full max-w-[1920px] mx-auto flex h-full bg-base-200">
-          <Sidebar />
-          <main className="flex-1 px-4 md:px-8 py-6 overflow-y-auto bg-base-100">
+    <html lang="en" data-theme="light">
+      <body className={`${roboto.variable} antialiased`}>
+        <div className="w-full max-w-[768px] mx-auto flex h-full min-h-screen">
+          {/* <Sidebar /> */}
+          <main className="flex-1 px-4 py-6 overflow-y-auto flex flex-col">
             <Header />
-            <div className="mt-7 max-w-[768px] mx-auto">{children}</div>
+            <div className=" mx-auto block w-full">{children}</div>
             <Footer />
           </main>
-          <InfoPanel />
+          {/* <InfoPanel /> */}
         </div>
         <Analytics />
       </body>
