@@ -7,11 +7,15 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
   const previousPage = pathname !== "/";
 
-  const getFormattedPath = (path: string) => {
+  const getFormattedPath = (path: string): string => {
     if (path === "/" || path.startsWith("/posts/")) return "My Blog";
 
-    const name = path.replace("/", "");
-    return name.charAt(0).toUpperCase() + name.slice(1);
+    const pathMap: Record<string, string> = {
+      "/concerts": "Concerts",
+      "/games": "Games",
+    };
+
+    return pathMap[path] || path.slice(1).charAt(0).toUpperCase() + path.slice(2);
   };
 
   return (

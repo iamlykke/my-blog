@@ -9,11 +9,22 @@ import "./globals.css";
 const roboto = Roboto({
   variable: "--roboto",
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "My blog",
-  description: "Lykke",
+  title: {
+    default: "Sergei Usachev | My Blog",
+    template: "%s | My Blog",
+  },
+  description: "Личный блог о концертах, играх, фильмах и путешествиях",
+  authors: [{ name: "Sergei Usachev" }],
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    siteName: "My Blog",
+  },
 };
 
 export default function RootLayout({

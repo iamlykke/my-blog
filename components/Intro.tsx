@@ -2,7 +2,7 @@ import { FaLinkedin, FaGithub, FaLastfmSquare } from "react-icons/fa";
 
 export const Intro: React.FC = () => {
   return (
-    <section className="card bg-base-200 my-b-5 flex flex-row gap-4 shadow-sm p-6">
+    <section className="card bg-base-200 my-5 flex flex-row gap-4 shadow-sm p-6">
       <div className="flex flex-col w-full">
         <h2 className="font-bold text-lg">Добро пожаловать в мой блог!</h2>
         <p className="text-sm mt-3">
