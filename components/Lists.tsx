@@ -23,9 +23,14 @@ export const Lists = () => {
             Просмотренные фильмы (letterboxd)
           </Link>
         </li>
+        <li className="list-row">
+          <Link href={"/travel"} className="text-md">
+            Путешествия
+          </Link>
+        </li>
         {/* <li className="text-md list-row">
           <Link href={"/concerts"} className="link-blue-underline">
-            Прочитаные книг
+            Прочитаные книги
           </Link>
         </li> */}
       </ul>

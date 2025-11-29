@@ -2,6 +2,9 @@ import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs();
@@ -21,6 +24,13 @@ export default async function PostPage({
   const { metadata, content } = post;
 
   const withTags = metadata?.tags.length > 0;
+
+  const options = {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+    },
+  };
 
   return (
     <article>
@@ -47,7 +57,9 @@ export default async function PostPage({
         </div>
       </div>
 
-      <MDXRemote source={content} />
+      <div className="mdx-content">
+        <MDXRemote source={content} options={options} />
+      </div>
     </article>
   );
 }
