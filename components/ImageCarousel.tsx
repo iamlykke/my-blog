@@ -18,13 +18,13 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
@@ -36,14 +36,14 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
   return (
     <>
-      <div className="relative w-full max-w-4xl mx-auto my-8">
+      <div className="relative w-full mx-auto my-8">
         {/* Основное изображение */}
         <div className="relative aspect-video bg-base-200 rounded-lg overflow-hidden">
           <Image
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
             fill
-            className="object-cover cursor-pointer"
+            className="object-contain cursor-pointer"
             onClick={() => setIsFullscreen(true)}
             priority={currentIndex === 0}
           />
@@ -85,24 +85,18 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
         {/* Миниатюры */}
         {images.length > 1 && (
-          <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+          <div className="flex gap-2 mt-4 pb-2">
             {images.map((image, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all ${
+                className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all cursor-pointer ${
                   index === currentIndex
                     ? "border-primary scale-105"
                     : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
+                <Image src={image.src} alt={image.alt} fill sizes="80px" />
               </button>
             ))}
           </div>
