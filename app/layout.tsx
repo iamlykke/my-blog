@@ -15,15 +15,15 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sergei Usachev | My Blog",
-    template: "%s | My Blog",
+    default: "Lykke",
+    template: "%s | Lykke",
   },
   description: "Личный блог о концертах, играх, фильмах и путешествиях",
   authors: [{ name: "Sergei Usachev" }],
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: "My Blog",
+    siteName: "Lykke",
   },
 };
 

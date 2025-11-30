@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { data } = matter(fileContent);
 
   return {
-    title: `${data.title} | My Blog`,
+    title: `${data.title}`,
     description: data.description,
   };
 }

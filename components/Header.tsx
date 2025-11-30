@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   const previousPage = pathname !== "/";
 
   const getFormattedPath = (path: string): string => {
-    if (path === "/" || path.startsWith("/posts/")) return "My Blog";
+    if (path === "/" || path.startsWith("/posts/")) return "Lykke";
 
     // Для страниц путешествий всегда показываем "Travel"
     if (path.startsWith("/travel")) return "Travel";
