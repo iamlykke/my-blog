@@ -27,7 +27,7 @@ export async function generateMetadata({
   try {
     const travel = getTravelBySlug(slug);
     return {
-      title: `${travel.metadata.country} - ${travel.metadata.title}`,
+      title: `${travel.metadata.title}`,
       description:
         travel.metadata.description ||
         `Путешествие в ${travel.metadata.country}`,
@@ -63,9 +63,7 @@ export default async function TravelPage({ params }: TravelPageProps) {
   return (
     <article className="prose prose-lg max-w-none">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">
-          {travel.metadata.country}
-        </h1>
+        <h1 className="text-3xl font-bold mb-2">{travel.metadata.title}</h1>
         <div className="text-gray-600 text-sm">
           <time dateTime={travel.metadata.date}>{travel.metadata.date}</time>
         </div>

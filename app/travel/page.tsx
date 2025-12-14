@@ -33,7 +33,7 @@ export default function TravelPage() {
                     href={`/travel/${travel.slug}`}
                     className="text-lg hover:underline hover:text-primary transition-colors"
                   >
-                    {travel.metadata.country}
+                    {travel.metadata.title}
                   </Link>
                 </li>
               ))}

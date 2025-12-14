@@ -47,8 +47,8 @@ export function getAllTravels(): Travel[] {
       if (a.metadata.year !== b.metadata.year) {
         return b.metadata.year - a.metadata.year;
       }
-      // Затем по порядку внутри года
-      return a.metadata.order - b.metadata.order;
+      // Затем по порядку внутри года (новые сверху)
+      return b.metadata.order - a.metadata.order;
     });
 }
 
