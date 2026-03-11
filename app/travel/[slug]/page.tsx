@@ -58,6 +58,7 @@ export default async function TravelPage({ params }: TravelPageProps) {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
     },
+    blockJS: false,
   };
 
   return (
