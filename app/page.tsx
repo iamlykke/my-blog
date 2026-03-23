@@ -84,7 +84,7 @@ export default function Home() {
             return (
               <div key={year} className="collapse collapse-arrow bg-base-200 rounded-lg">
                 <input type="checkbox" />
-                <div className="collapse-title flex items-center gap-3 py-3 font-semibold text-lg justify-between">
+                <div className="collapse-title flex items-center gap-3 py-3 font-semibold text-lg justify-between after:!top-1/2 after:!-translate-y-1/4">
                   {year}
                   <span className="text-sm font-normal text-base-content/40">
                     {byYear[year].length} concerts
