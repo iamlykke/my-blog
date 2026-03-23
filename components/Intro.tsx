@@ -1,50 +1,54 @@
-import { FaLinkedin, FaGithub, FaLastfmSquare } from "react-icons/fa";
+import { FaLastfmSquare } from "react-icons/fa";
+import { getAllConcerts } from "@/lib/concerts";
 
 export const Intro: React.FC = () => {
+  const today = new Date().toISOString().split("T")[0];
+  const all = getAllConcerts();
+  const past = all.filter((c) => c.metadata.date < today);
+
+  const totalConcerts = past.length;
+  const uniqueCities = new Set(
+    past.map((c) => c.metadata.location.split(",")[0].trim())
+  ).size;
+  const uniqueCountries = new Set(
+    past.map((c) => c.metadata.location.split(",").pop()?.trim())
+  ).size;
+
   return (
-    <section className="card bg-base-200 mb-5 flex flex-row gap-4 shadow-sm p-6">
-      <div className="flex flex-col w-full">
-        <h2 className="font-bold text-lg">Добро пожаловать в мой блог!</h2>
-        <p className="text-sm mt-3">
-          Собираю здесь всё, что люблю и что меня окружает: концерты, фильмы,
-          игры, путешествия и прочие заметки. Когда нибудь буду вести его
-          нормально, а пока экспериментирую с дизайном и наполнением. Планирую
-          добавить раздел с путешествиями и может быть краткие заметки и фотки с
-          концертов
-        </p>
-        <div className="flex flex-row justify-between mt-5 items-center">
-          <div className="flex gap-2">
-            <a
-              href="https://www.linkedin.com/in/sergeiusachev/"
-              target="_blank"
-            >
-              <FaLinkedin
-                size="1.5rem"
-                className="opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </a>
-            {/* <a href="https://t.me/iamlykke" target="_blank">
-              <FaTelegram
-                size="1.5rem"
-                className="opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </a> */}
-            <a href="https://github.com/iamlykke" target="_blank">
-              <FaGithub
-                size="1.5rem"
-                className="opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </a>
-            <a href="https://www.last.fm/user/iamlykke" target="_blank">
-              <FaLastfmSquare
-                size="1.5rem"
-                className="opacity-70 hover:opacity-100 transition-all duration-300"
-              />
-            </a>
-          </div>
-          <div className="text-sm text-gray-500">📍 Serbia, Novi Sad</div>
+    <section className="rounded-xl mb-4 w-full">
+      <h1 className="text-2xl font-bold tracking-tight mb-1">
+        Моя концертная жизнь
+      </h1>
+      <p className="text-sm text-base-content/50 mb-6">
+        фотки и заметки с концертов
+      </p>
+
+      <div className="flex gap-6 mb-6">
+        <div>
+          <p className="text-3xl font-bold">{totalConcerts}</p>
+          <p className="text-xs text-base-content/50 mt-0.5">концертов</p>
+        </div>
+        <div className="w-px bg-base-content/10" />
+        <div>
+          <p className="text-3xl font-bold">{uniqueCities}</p>
+          <p className="text-xs text-base-content/50 mt-0.5">городов</p>
+        </div>
+        <div className="w-px bg-base-content/10" />
+        <div>
+          <p className="text-3xl font-bold">{uniqueCountries}</p>
+          <p className="text-xs text-base-content/50 mt-0.5">стран</p>
         </div>
       </div>
+
+      <a
+        href="https://www.last.fm/user/iamlykke"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm text-base-content/50 hover:text-base-content transition-colors"
+      >
+        <FaLastfmSquare size="1.1rem" />
+        Last.fm
+      </a>
     </section>
   );
 };

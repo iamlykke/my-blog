@@ -1,62 +1,63 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { Metadata } from "next";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Link from "next/link";
-import Image from "next/image";
+import { Metadata } from "next";
+import { getConcertsByGroup, formatConcertDate } from "@/lib/concerts";
+import { Concert } from "@/types";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const filePath = path.join(process.cwd(), "content/concerts/concerts.mdx");
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { data } = matter(fileContent);
+export const metadata: Metadata = {
+  title: "Concerts",
+  description: "Список посещенных и планируемых концертов",
+};
 
-  return {
-    title: `${data.title}`,
-    description: data.description,
-  };
+function ConcertItem({ concert }: { concert: Concert }) {
+  const dateStr = formatConcertDate(concert.metadata.date);
+  const label = `${dateStr} — ${concert.metadata.artist} — ${concert.metadata.location}`;
+
+  if (concert.hasContent) {
+    return (
+      <li>
+        <Link
+          href={`/concerts/${concert.slug}`}
+          className="hover:underline hover:text-primary transition-colors"
+        >
+          {label}
+        </Link>
+      </li>
+    );
+  }
+
+  return <li className="text-base-content/80">{label}</li>;
 }
 
 export default function ConcertsPage() {
-  const filePath = path.join(process.cwd(), "content/concerts/concerts.mdx");
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(fileContent);
-
-  const options = {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
-    },
-  };
+  const { upcoming, byYear } = getConcertsByGroup();
+  const years = Object.keys(byYear)
+    .map(Number)
+    .sort((a, b) => b - a);
 
   return (
     <div>
-      <p className="mb-3">
-        Актуальная инфа всегда{" "}
-        <Link
-          className="underline"
-          href="https://www.last.fm/user/iamlykke"
-          target="_blank"
-        >
-          тут
-        </Link>
-      </p>
-      <div className="flex flex-col items-center mb-5 gap-2">
-        <Image
-          src="/images/concerts/chelsea-grin-2024.jpg"
-          width={736}
-          height={100}
-          alt="Chelsea grin 2024"
-          className="object-cover shadow rounded-sm"
-        />
-        <p className="italic text-sm">Chelsea Grin in Budapest, 2024</p>
-      </div>
+      <div className="space-y-8">
+        {upcoming.length > 0 && (
+          <div>
+            <h2 className="text-xl font-bold mb-3">Upcoming</h2>
+            <ul className="space-y-1">
+              {upcoming.map((concert) => (
+                <ConcertItem key={concert.slug} concert={concert} />
+              ))}
+            </ul>
+          </div>
+        )}
 
-      <div className="mdx-content">
-        <MDXRemote source={content} options={options} />
+        {years.map((year) => (
+          <div key={year}>
+            <h2 className="text-xl font-bold mb-3">{year}</h2>
+            <ul className="space-y-1">
+              {byYear[year].map((concert) => (
+                <ConcertItem key={concert.slug} concert={concert} />
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );
