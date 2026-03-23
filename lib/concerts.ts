@@ -10,7 +10,7 @@ export function getConcertSlugs(): string[] {
     return [];
   }
   return fs.readdirSync(concertsDirectory).filter(
-    file => file.endsWith('.mdx') && file !== 'concerts.mdx'
+    file => file.endsWith('.mdx') && /^\d{4}-\d{2}-\d{2}-/.test(file)
   );
 }
 
