@@ -10,7 +10,15 @@ export const metadata: Metadata = {
 
 function ConcertItem({ concert }: { concert: Concert }) {
   const dateStr = formatConcertDate(concert.metadata.date);
-  const label = `${dateStr} — ${concert.metadata.artist} — ${concert.metadata.location}`;
+  const { artist, location, venue } = concert.metadata;
+  const locationStr = venue ? `${venue}, ${location}` : location;
+
+  const content = (
+    <>
+      {dateStr} — {artist}
+      <span className="text-base-content/50"> · {locationStr}</span>
+    </>
+  );
 
   if (concert.hasContent) {
     return (
@@ -19,13 +27,13 @@ function ConcertItem({ concert }: { concert: Concert }) {
           href={`/concerts/${concert.slug}`}
           className="hover:underline hover:text-primary transition-colors"
         >
-          {label}
+          {content}
         </Link>
       </li>
     );
   }
 
-  return <li className="text-base-content/80">{label}</li>;
+  return <li className="text-base-content/80">{content}</li>;
 }
 
 export default function ConcertsPage() {
