@@ -5,11 +5,8 @@ import { Concert } from "@/types";
 
 function ConcertRow({ concert }: { concert: Concert }) {
   const date = formatConcertDate(concert.metadata.date);
-  const location = <span className="italic">{concert.metadata.location}</span>;
-
-  const venue = concert.metadata.venue ? (
-    <span className="text-sm text-base-content/50">{concert.metadata.venue}</span>
-  ) : null;
+  const { location, venue } = concert.metadata;
+  const locationStr = venue ? `${venue}, ${location}` : location;
 
   const artist = concert.hasContent ? (
     <Link
@@ -24,8 +21,8 @@ function ConcertRow({ concert }: { concert: Concert }) {
 
   return (
     <li className={!concert.hasContent ? "text-base-content/70" : ""}>
-      {date} — {artist} — {location}
-      {venue && <> · {venue}</>}
+      {date} — {artist}
+      <span className="text-sm text-base-content/50"> · {locationStr}</span>
     </li>
   );
 }
