@@ -77,7 +77,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
           <select
             value={cityFilter}
             onChange={(e) => setCityFilter(e.target.value)}
-            className="select select-bordered select-sm join-item w-36"
+            className="select select-bordered select-sm join-item w-26 sm:w-40"
           >
             <option value="">All cities</option>
             {cities.map((city) => (
@@ -87,7 +87,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
           <select
             value={artistFilter}
             onChange={(e) => setArtistFilter(e.target.value)}
-            className="select select-bordered select-sm join-item w-36"
+            className="select select-bordered select-sm join-item w-26 sm:w-40"
           >
             <option value="">All artists</option>
             {artists.map((artist) => (
