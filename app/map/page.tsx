@@ -10,7 +10,7 @@ export default function MapPage() {
   const concerts = getAllConcerts();
 
   return (
-    <div className="h-screen md:h-[1000px]">
+    <div className="h-[calc(100dvh-240px)] md:h-[1000px]">
       <MapLoader concerts={concerts} />
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Concert } from "@/types";
 import { formatConcertDate } from "@/lib/concerts";
 
@@ -14,6 +14,73 @@ function ConcertRow({ concert }: { concert: Concert }) {
       {formatConcertDate(concert.date)} — <span>{concert.artist}</span>
       <span className="text-sm text-base-content/50"> · {locationStr}</span>
     </li>
+  );
+}
+
+function FilterDropdown({
+  value,
+  onChange,
+  options,
+  placeholder,
+  isLast,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+  placeholder: string;
+  isLast?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, []);
+
+  const label = value || placeholder;
+
+  return (
+    <div ref={ref} className="relative join-item">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className={`btn btn-sm btn-ghost border border-base-content/20 h-full w-26 sm:w-40 flex items-center justify-between gap-1 px-3 font-normal text-sm text-base-content/60 ${isLast ? "rounded-l-none rounded-r-lg" : "rounded-none"}`}
+      >
+        <span className="truncate">{label}</span>
+        <svg className="w-3 h-3 shrink-0 opacity-50" fill="none" viewBox="0 0 10 6">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      {open && (
+        <ul className="absolute right-0 top-full mt-1 z-50 bg-base-100 border border-base-300 rounded-xl shadow-lg max-h-64 overflow-y-auto w-48 py-1">
+          <li>
+            <button
+              className={`w-full text-left px-4 py-2 text-sm hover:bg-base-200 transition-colors ${!value ? "font-medium" : "text-base-content/60"}`}
+              onClick={() => { onChange(""); setOpen(false); }}
+            >
+              {placeholder}
+            </button>
+          </li>
+          {options.map((opt) => (
+            <li key={opt}>
+              <button
+                className={`w-full text-left px-4 py-2 text-sm hover:bg-base-200 transition-colors ${value === opt ? "font-medium text-primary" : ""}`}
+                onClick={() => { onChange(opt); setOpen(false); }}
+              >
+                {opt}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
@@ -65,51 +132,44 @@ export function HomeList({ upcoming, byYear, years }: Props) {
 
   return (
     <div className="space-y-4">
-        {/* Controls */}
-        <div className="join w-full">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search..."
-            className="input input-bordered input-sm join-item flex-1"
-          />
-          <select
-            value={cityFilter}
-            onChange={(e) => setCityFilter(e.target.value)}
-            className="select select-bordered select-sm join-item w-26 sm:w-40"
-          >
-            <option value="">All cities</option>
-            {cities.map((city) => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
-          <select
-            value={artistFilter}
-            onChange={(e) => setArtistFilter(e.target.value)}
-            className="select select-bordered select-sm join-item w-26 sm:w-40"
-          >
-            <option value="">All artists</option>
-            {artists.map((artist) => (
-              <option key={artist} value={artist}>{artist}</option>
-            ))}
-          </select>
-        </div>
+      {/* Controls */}
+      <div className="join w-full">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
+          className="input input-bordered input-sm join-item flex-1"
+        />
+        <FilterDropdown
+          value={cityFilter}
+          onChange={setCityFilter}
+          options={cities}
+          placeholder="All cities"
+        />
+        <FilterDropdown
+          value={artistFilter}
+          onChange={setArtistFilter}
+          options={artists}
+          placeholder="All artists"
+          isLast
+        />
+      </div>
 
-        {/* Filtered results */}
-        {isFiltering && (
-          <div className="bg-base-200 rounded-xl px-4 py-3">
-            {filtered.length === 0 ? (
-              <p className="text-base-content/40 text-sm">Nothing found</p>
-            ) : (
-              <ul className="space-y-1">
-                {filtered.map((c) => (
-                  <ConcertRow key={c.date + c.artist} concert={c} />
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
+      {/* Filtered results */}
+      {isFiltering && (
+        <div className="bg-base-200 rounded-xl px-4 py-3">
+          {filtered.length === 0 ? (
+            <p className="text-base-content/40 text-sm">Nothing found</p>
+          ) : (
+            <ul className="space-y-1">
+              {filtered.map((c) => (
+                <ConcertRow key={c.date + c.artist} concert={c} />
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
 
       {/* Normal grouped list */}
       {!isFiltering && (

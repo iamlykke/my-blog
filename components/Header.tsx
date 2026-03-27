@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <div className="navbar p-0 justify-center h-fit relative max-w-[768px] mx-auto mb-7">
+    <div className="navbar p-0 justify-center h-fit relative max-w-[768px] mx-auto mb-2">
       {previousPage && (
         <button
           onClick={() => router.back()}
