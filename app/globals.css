@@ -79,6 +79,14 @@ body {
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+.leaflet-popup-content p {
+  margin: 0 !important;
+}
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 @layer base {
   a:not(.no-underline):not(.link-blue-underline) {
     @apply no-underline hover:underline underline-offset-3 transition-all duration-300;

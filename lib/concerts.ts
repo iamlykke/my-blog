@@ -1,47 +1,16 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { Concert } from '@/types';
+import concertsData from '@/content/concerts.json';
 
-const concertsDirectory = path.join(process.cwd(), 'content/concerts');
+const concerts: Concert[] = concertsData as Concert[];
 
-export function getConcertSlugs(): string[] {
-  if (!fs.existsSync(concertsDirectory)) {
-    return [];
-  }
-  return fs.readdirSync(concertsDirectory).filter(
-    file => file.endsWith('.mdx') && /^\d{4}-\d{2}-\d{2}-/.test(file)
-  );
-}
-
-export function getConcertBySlug(slug: string): Concert {
-  const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(concertsDirectory, `${realSlug}.mdx`);
-
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-
-  return {
-    slug: realSlug,
-    metadata: {
-      artist: data.artist,
-      date: data.date,
-      location: data.location,
-      venue: data.venue,
-      year: data.year,
-      draft: data.draft,
-    },
-    content,
-    hasContent: content.trim().length > 0,
-  };
+// Convert DD.MM.YYYY → YYYY-MM-DD for sorting/comparison
+export function toIso(date: string): string {
+  const [dd, mm, yyyy] = date.split('.');
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 export function getAllConcerts(): Concert[] {
-  const slugs = getConcertSlugs();
-  return slugs
-    .map(slug => getConcertBySlug(slug))
-    .filter(concert => !concert.metadata.draft)
-    .sort((a, b) => b.metadata.date.localeCompare(a.metadata.date));
+  return [...concerts].sort((a, b) => toIso(b.date).localeCompare(toIso(a.date)));
 }
 
 export function getConcertsByGroup(): {
@@ -49,31 +18,26 @@ export function getConcertsByGroup(): {
   byYear: Record<number, Concert[]>;
 } {
   const today = new Date().toISOString().split('T')[0];
-  const concerts = getAllConcerts();
+  const all = getAllConcerts();
 
   const upcoming: Concert[] = [];
   const byYear: Record<number, Concert[]> = {};
 
-  concerts.forEach(concert => {
-    if (concert.metadata.date >= today) {
+  all.forEach(concert => {
+    if (toIso(concert.date) >= today) {
       upcoming.push(concert);
     } else {
-      const year = concert.metadata.year;
-      if (!year || isNaN(year)) return;
-      if (!byYear[year]) {
-        byYear[year] = [];
-      }
+      const year = parseInt(concert.date.slice(6), 10);
+      if (!byYear[year]) byYear[year] = [];
       byYear[year].push(concert);
     }
   });
 
-  // Upcoming sorted ascending (nearest first)
-  upcoming.sort((a, b) => a.metadata.date.localeCompare(b.metadata.date));
+  upcoming.sort((a, b) => toIso(a.date).localeCompare(toIso(b.date)));
 
   return { upcoming, byYear };
 }
 
-export function formatConcertDate(isoDate: string): string {
-  const [, month, day] = isoDate.split('-');
-  return `${day}.${month}`;
+export function formatConcertDate(date: string): string {
+  return date.slice(0, 5); // DD.MM
 }

@@ -1,0 +1,15 @@
+export const CITY_COORDS: Record<string, [number, number]> = {
+  "Saint-Petersburg": [59.9343, 30.3351],
+  "Astana":           [51.1801, 71.4460],
+  "Belgrade":         [44.8176, 20.4569],
+  "Budapest":         [47.4979, 19.0402],
+  "Novi Sad":         [45.2671, 19.8335],
+  "Hamburg":          [53.5753, 10.0153],
+  "London":           [51.5074, -0.1278],
+  "Hatfield":         [51.7632, -0.2286],
+  "Vienna":           [48.2082, 16.3738],
+  "Bologna":          [44.4949, 11.3426],
+  "Yerevan":          [40.1792, 44.4991],
+  "Istanbul":         [41.0082, 28.9784],
+  "Berlin":           [52.5200, 13.4050],
+};

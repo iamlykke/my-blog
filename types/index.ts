@@ -28,18 +28,9 @@ export interface Travel {
   content: string;
 }
 
-export interface ConcertMetadata {
+export interface Concert {
   artist: string;
   date: string; // ISO: YYYY-MM-DD
   location: string;
   venue?: string;
-  year: number;
-  draft?: boolean;
-}
-
-export interface Concert {
-  slug: string;
-  metadata: ConcertMetadata;
-  content: string;
-  hasContent: boolean;
 }
