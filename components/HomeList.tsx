@@ -98,7 +98,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
 
         {/* Filtered results */}
         {isFiltering && (
-          <div className="bg-base-200 rounded-lg px-4 py-3">
+          <div className="bg-base-200 rounded-xl px-4 py-3">
             {filtered.length === 0 ? (
               <p className="text-base-content/40 text-sm">Nothing found</p>
             ) : (
@@ -115,7 +115,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
       {!isFiltering && (
         <>
           {upcoming.length > 0 && (
-            <div className="bg-base-200 rounded-lg px-4 py-3">
+            <div className="bg-base-200 rounded-2xl px-4 py-3">
               <h2 className="text-lg font-semibold mb-2">Upcoming</h2>
               <ul className="space-y-1">
                 {upcoming.map((c) => (
@@ -137,7 +137,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
 
             if (isCurrentYear) {
               return (
-                <div key={year} className="bg-base-200 rounded-lg px-4 py-3">
+                <div key={year} className="bg-base-200 rounded-2xl px-4 py-3">
                   <div className="flex items-baseline gap-2 mb-2 justify-between">
                     <h3 className="text-lg font-semibold">{year}</h3>
                     <span className="text-sm font-normal text-base-content/40">
@@ -150,7 +150,7 @@ export function HomeList({ upcoming, byYear, years }: Props) {
             }
 
             return (
-              <div key={year} className="collapse collapse-arrow bg-base-200 rounded-lg">
+              <div key={year} className="collapse collapse-arrow bg-base-200 rounded-2xl">
                 <input type="checkbox" />
                 <div className="collapse-title flex items-center gap-3 py-3 font-semibold text-lg justify-between after:!top-1/2 after:!-translate-y-1/4">
                   {year}
