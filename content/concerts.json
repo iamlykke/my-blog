@@ -50,5 +50,5 @@
   { "date": "16.08.2026", "artist": "Deftones", "location": "Vienna, Austria", "venue": "METAstadt" },
   { "date": "18.08.2026", "artist": "Deftones, Turnstile", "location": "Berlin, Germany", "venue": "Max-Schmeling-Halle" },
   { "date": "21.10.2026", "artist": "Simple Plan, Neck Deep, Charlotte Sands", "location": "Budapest, Hungary", "venue": "Barba Negra" },
-  { "date": "13.11.2026", "artist": "Placebo", "location": "Budapest, Hungary", "venue": "Papp Laszlo Sportarena" }
+  { "date": "13.11.2026", "artist": "Placebo", "location": "Budapest, Hungary", "venue": "Papp Laszlo Sportarena" }, {"date": "18.07.2026", "artist": "House of Protection", "location": "Belgrade, Serbia"}
 ]
