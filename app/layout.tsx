@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 
 import "./globals.css";
 
@@ -10,6 +8,20 @@ const roboto = Roboto({
   variable: "--roboto",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+});
+
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 
@@ -34,14 +46,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${roboto.variable} antialiased`}>
-        <div className="w-full max-w-[768px] mx-auto flex h-full min-h-screen">
-          <main className="flex-1 px-4 py-6 overflow-y-auto flex flex-col">
-            <Header />
-            <div className=" mx-auto block w-full">{children}</div>
-            <Footer />
-          </main>
-        </div>
+      <body className={`${roboto.variable} ${interTight.variable} ${jetbrainsMono.variable} antialiased`}>
+        {children}
         <Analytics />
       </body>
     </html>

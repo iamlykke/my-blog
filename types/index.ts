@@ -30,7 +30,8 @@ export interface Travel {
 
 export interface Concert {
   artist: string;
-  date: string; // ISO: YYYY-MM-DD
+  date: string;
   location: string;
   venue?: string;
+  setlistUrl?: string;
 }
