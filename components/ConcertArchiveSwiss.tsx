@@ -95,11 +95,11 @@ function SwissMast({ stats, yearsDesc }: { stats: Stats; yearsDesc: number[] }) 
       <div className="swiss-mast-sub">
         <div>
           <span className="k">System</span>
-          Personal live-music log
+          Live-music log
         </div>
         <div>
           <span className="k">Custodian</span>
-          Lykke · Belgrade
+          Lykke · Serbia
         </div>
         <div>
           <span className="k">Coverage</span>
