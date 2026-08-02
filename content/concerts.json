@@ -104,7 +104,8 @@
   { "date": "18.08.2026", "artist": "Deftones, Turnstile", "location": "Berlin, Germany", "venue": "Max-Schmeling-Halle" },
   { "date": "21.10.2026", "artist": "Simple Plan, Neck Deep, Charlotte Sands", "location": "Budapest, Hungary", "venue": "Barba Negra" },
   { "date": "13.11.2026", "artist": "Placebo", "location": "Budapest, Hungary", "venue": "Papp Laszlo Sportarena" }, 
-  {"date": "19.07.2026", "artist": "House of Protection", "location": "Belgrade, Serbia", "venue": "Dorcol Platz"},
+  {"date": "23.07.2026", "artist": "House of Protection", "location": "Budapest, Hungary", "venue": "Durer Kert"},
+  {"date": "27.09.2026", "artist": "Пошлая Молли", "location": "Belgrade, Serbia", "venue": "Hangar"},
   {"date": "08.10.2026", "artist": "A$AP Rocky", "location": "Belgrade, Serbia", "venue": "Beogradska Arena"},
   {"date": "15.10.2026", "artist": "The Korea", "location": "Belgrade, Serbia", "venue": "Zappa Barka"}
 ]
