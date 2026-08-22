@@ -8,12 +8,7 @@ import { toIso } from "@/lib/concerts";
 import "leaflet/dist/leaflet.css";
 
 function pluralize(n: number): string {
-  const mod10 = n % 10;
-  const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 14) return "концертов";
-  if (mod10 === 1) return "концерт";
-  if (mod10 >= 2 && mod10 <= 4) return "концерта";
-  return "концертов";
+  return n === 1 ? "concert" : "concerts";
 }
 
 interface CityData {
@@ -67,7 +62,7 @@ export function ConcertMap({ concerts }: { concerts: Concert[] }) {
     <MapContainer
       center={[48, 15]}
       zoom={4}
-      className="w-full h-full rounded-lg"
+      className="w-full h-full"
       scrollWheelZoom
       attributionControl={false}
     >

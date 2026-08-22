@@ -8,7 +8,7 @@ const ConcertMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full bg-base-200 rounded-lg animate-pulse" />
+      <div className="w-full h-full bg-base-200 animate-pulse" />
     ),
   }
 );

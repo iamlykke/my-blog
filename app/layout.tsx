@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     default: "Lykke",
     template: "%s | Lykke",
   },
-  description: "Концертный дневник",
+  description: "Concert diary",
   authors: [{ name: "Sergei Usachev" }],
   openGraph: {
     type: "website",

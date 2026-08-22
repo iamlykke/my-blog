@@ -1,17 +1,22 @@
 import { Metadata } from "next";
 import { getAllConcerts } from "@/lib/concerts";
 import { MapLoader } from "@/components/MapLoader";
+import { SwissTopbar } from "@/components/SwissTopbar";
+import "../swiss.css";
 
 export const metadata: Metadata = {
-  title: "Концертная карта",
+  title: "Map",
 };
 
 export default function MapPage() {
   const concerts = getAllConcerts();
 
   return (
-    <div className="h-[calc(100dvh-240px)] md:h-[1000px]">
-      <MapLoader concerts={concerts} />
+    <div className="page-swiss page-map">
+      <SwissTopbar page="map" />
+      <div className="map-full">
+        <MapLoader concerts={concerts} />
+      </div>
     </div>
   );
 }

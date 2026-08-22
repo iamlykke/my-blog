@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { Concert } from "@/types";
 import { toIso } from "@/lib/concerts";
 import { getSetlist, getNote, Setlist } from "@/lib/setlists";
+import { SwissTopbar } from "@/components/SwissTopbar";
 
 const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
@@ -72,19 +73,6 @@ function groupByYear(concerts: Concert[], today: string): {
 // ============================================================
 // Sub-components
 // ============================================================
-
-function SwissTopbar() {
-  return (
-    <div className="swiss-topbar">
-      <div><span className="dot" />Archive · active</div>
-      <div>
-        <a href="https://www.last.fm/user/iamlykke" target="_blank" rel="noopener noreferrer">Last.fm ↗</a>
-        <a href="https://roundnsquare.club/lykke" target="_blank" rel="noopener noreferrer">Vinyl ↗</a>
-        <a href="/map">Map ↗</a>
-      </div>
-    </div>
-  );
-}
 
 function SwissMast({ stats, yearsDesc }: { stats: Stats; yearsDesc: number[] }) {
   const minYear = yearsDesc[yearsDesc.length - 1] ?? new Date().getFullYear();
@@ -423,7 +411,7 @@ export function ConcertArchiveSwiss({ concerts }: { concerts: Concert[] }) {
 
   return (
     <div className="page-swiss grid">
-      <SwissTopbar />
+      <SwissTopbar page="archive" />
       <SwissMast stats={stats} yearsDesc={yearsDesc} />
       <SwissStats stats={stats} />
       <SwissControls
