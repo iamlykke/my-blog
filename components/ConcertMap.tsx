@@ -82,14 +82,14 @@ export function ConcertMap({ concerts }: { concerts: Concert[] }) {
             weight: 1.5,
           }}
         >
-          <Popup>
-            <div className="w-[300px]">
-              <p className="font-bold text-base mb-1">
+          <Popup maxWidth={320} className="concert-popup">
+            <div className="w-[300px] flex flex-col" style={{ maxHeight: "min(60vh, 420px)" }}>
+              <p className="font-bold text-base mb-1 shrink-0">
                 {city.city}
                 <span className="font-normal text-gray-500 text-sm"> · {city.country}</span>
                 <span className="font-normal text-gray-500 text-sm"> · {city.concerts.length} {pluralize(city.concerts.length)}</span>
               </p>
-              <ul className="text-sm space-y-0.5 mt-4">
+              <ul className="text-sm space-y-0.5 mt-4 overflow-y-auto min-h-0 pr-1">
                 {city.concerts
                   .sort((a, b) => toIso(b.date).localeCompare(toIso(a.date)))
                   .map((c) => (
