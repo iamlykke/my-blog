@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function SwissTopbar({ page }: { page: "archive" | "map" }) {
   return (
     <div className="swiss-topbar">
@@ -9,9 +11,9 @@ export function SwissTopbar({ page }: { page: "archive" | "map" }) {
         <a href="https://www.last.fm/user/iamlykke" target="_blank" rel="noopener noreferrer">Last.fm ↗</a>
         <a href="https://roundnsquare.club/lykke" target="_blank" rel="noopener noreferrer">Vinyl ↗</a>
         {page === "archive" ? (
-          <a href="/map">Map ↗</a>
+          <Link href="/map">Map ↗</Link>
         ) : (
-          <a href="/">Archive ↗</a>
+          <Link href="/">Archive ↗</Link>
         )}
       </div>
     </div>
