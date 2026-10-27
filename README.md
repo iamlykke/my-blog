@@ -123,5 +123,5 @@ GitHub Actions запускает lint и сборку на каждый push и
 ---
 
 <div align="center">
-<sub>Сделано с 🤘 Сергеем Усачёвым</sub>
+<sub>Сделано с 🤘</sub>
 </div>
