@@ -2,7 +2,7 @@
 
 # 🎸 Concerts Archieve
 
-**Личный архив концертов: каждое шоу, город и площадка с 2011 года.**
+**A personal archive of every concert I've been to since 2011: artists, cities and venues.**
 
 [![CI](https://github.com/iamlykke/my-blog/actions/workflows/ci.yml/badge.svg)](https://github.com/iamlykke/my-blog/actions/workflows/ci.yml)
 ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
@@ -15,113 +15,98 @@
 
 ---
 
-## ✨ Возможности
+## ✨ Features
 
-- 📅 **Хронология концертов.** Предстоящие шоу идут отдельным блоком, прошедшие сгруппированы по годам.
-- 🎶 **Сет-листы и заметки.** Сет-лист и энкор раскрываются прямо в строке концерта, к любому шоу можно добавить личную заметку.
-- 🗺️ **Карта.** Все города, где были концерты, на интерактивной карте Leaflet (страница `/map`).
-- 🎧 **Now Playing.** Текущий трек и последние прослушивания из Last.fm.
-- 🧱 **Swiss-стиль.** Минималистичная типографика и строгая сетка.
+- 📅 **Concert timeline.** Upcoming shows are listed separately; past shows are grouped by year.
+- 🎶 **Setlists and notes.** Setlists and encores expand right inside the concert row, and any show can carry a personal note or a link to an external setlist.
+- 🗺️ **Map.** Every city with a concert on an interactive Leaflet map at `/map`.
+- 🧱 **Swiss style.** Minimal typography on a strict grid.
 
-## 🛠 Стек
+## 🛠 Tech stack
 
-| Слой       | Технологии                                       |
-| ---------- | ------------------------------------------------ |
-| Фреймворк  | Next.js 16 (App Router), React 19, TypeScript    |
-| Стили      | Tailwind CSS 4, daisyUI                          |
-| Карта      | Leaflet + react-leaflet                          |
-| Анимации   | Motion                                           |
-| Данные     | JSON + TypeScript-модули, Last.fm API            |
-| Аналитика  | Vercel Analytics                                 |
+| Layer     | Technologies                                  |
+| --------- | --------------------------------------------- |
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Styling   | Tailwind CSS 4, daisyUI                       |
+| Map       | Leaflet + react-leaflet                       |
+| Data      | JSON and TypeScript modules, no database      |
+| Analytics | Vercel Analytics                              |
 
-## 🚀 Быстрый старт
+## 🚀 Getting started
 
-Нужен Node.js 20 или новее.
+Requires Node.js 20 or newer.
 
 ```bash
 git clone https://github.com/iamlykke/my-blog.git
 cd my-blog
 npm install
-```
-
-Создайте `.env.local` для виджета Last.fm:
-
-```env
-LASTFM_USERNAME=your_lastfm_username
-LASTFM_API_KEY=your_lastfm_api_key
-```
-
-> API-ключ можно получить на [last.fm/api](https://www.last.fm/api/account/create).
-
-Запустите dev-сервер и откройте [http://localhost:3000](http://localhost:3000):
-
-```bash
 npm run dev
 ```
 
-### Скрипты
+Then open [http://localhost:3000](http://localhost:3000). No environment variables are needed.
 
-| Команда         | Что делает                       |
+### Scripts
+
+| Command         | Description                      |
 | --------------- | -------------------------------- |
-| `npm run dev`   | Dev-сервер с hot reload          |
-| `npm run build` | Продакшен-сборка                 |
-| `npm run start` | Запуск собранного приложения     |
-| `npm run lint`  | Проверка кода ESLint             |
+| `npm run dev`   | Start the dev server with hot reload |
+| `npm run build` | Build for production             |
+| `npm run start` | Serve the production build       |
+| `npm run lint`  | Run ESLint                       |
 
-## 📝 Как добавить концерт
+## 📝 Adding a concert
 
-**1. Запись в [`content/concerts.json`](content/concerts.json):**
+**1. Add an entry to [`content/concerts.json`](content/concerts.json):**
 
 ```json
 { "date": "17.09.2023", "artist": "Blink-182, The Story So Far", "location": "London, UK", "venue": "The O2" }
 ```
 
-- `date` в формате `DD.MM.YYYY`. Концерт с датой в будущем автоматически попадёт в «Upcoming».
-- `venue` и `setlistUrl` необязательны.
+- `date` uses the `DD.MM.YYYY` format. A future date puts the show under "Upcoming" automatically.
+- `venue` and `setlistUrl` are optional.
 
-**2. Новый город на карте.** Если города ещё нет, добавьте его координаты в [`lib/cityCoords.ts`](lib/cityCoords.ts):
+**2. New city on the map.** If the city isn't listed yet, add its coordinates to [`lib/cityCoords.ts`](lib/cityCoords.ts):
 
 ```ts
 "London": [51.5074, -0.1278],
 ```
 
-**3. Сет-лист или заметка (по желанию)** в [`lib/setlists.ts`](lib/setlists.ts). Ключ имеет вид `"DD.MM.YYYY|Артист"` и должен посимвольно совпадать с записью в `concerts.json`:
+**3. Setlist or note (optional)** in [`lib/setlists.ts`](lib/setlists.ts). The key is `"DD.MM.YYYY|Artist"` and must match the `date` and `artist` fields in `concerts.json` exactly:
 
 ```ts
 "17.09.2023|Blink-182, The Story So Far": {
   songs: ["Elevator", "All the Small Things"],
   encore: ["Dammit"],
-  note: "Стояли в первых рядах.",
+  note: "Front row the whole night.",
 },
 ```
 
-Подробная инструкция есть в комментарии в начале файла.
+The comment at the top of that file has full instructions.
 
-## 📁 Структура
+## 📁 Project structure
 
 ```
 ├── app/
-│   ├── page.tsx            # Главная: архив концертов
-│   ├── map/page.tsx        # Карта концертов
-│   └── api/lastfm/         # Прокси к Last.fm API
-├── components/             # UI-компоненты
-├── content/concerts.json   # Данные о концертах
+│   ├── page.tsx            # Home: the concert archive
+│   └── map/page.tsx        # Concert map
+├── components/             # UI components
+├── content/concerts.json   # Concert data
 ├── lib/
-│   ├── concerts.ts         # Сортировка и группировка
-│   ├── cityCoords.ts       # Координаты городов
-│   └── setlists.ts         # Сет-листы и заметки
-├── types/                  # TypeScript-типы
-└── public/images/          # Фото с концертов
+│   ├── concerts.ts         # Sorting and grouping
+│   ├── cityCoords.ts       # City coordinates
+│   └── setlists.ts         # Setlists and notes
+├── types/                  # TypeScript types
+└── public/images/          # Concert photos
 ```
 
-## ☁️ Деплой
+## ☁️ Deployment
 
-Проект рассчитан на [Vercel](https://vercel.com). Импортируйте репозиторий и добавьте `LASTFM_USERNAME` и `LASTFM_API_KEY` в переменные окружения проекта.
+The site is built for [Vercel](https://vercel.com): import the repository and deploy, no extra configuration is required.
 
-GitHub Actions запускает lint и сборку на каждый push и pull request в `master`.
+GitHub Actions runs lint and a production build on every push and pull request to `master`.
 
 ---
 
 <div align="center">
-<sub>Сделано с 🤘</sub>
+<sub>Made with 🤘</sub>
 </div>
