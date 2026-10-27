@@ -27,15 +27,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lykke",
-    template: "%s | Lykke",
+    default: "Concerts Archieve",
+    template: "%s | Concerts Archieve",
   },
   description: "Concert diary",
   authors: [{ name: "Sergei Usachev" }],
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: "Lykke",
+    siteName: "Concerts Archieve",
   },
 };
 
